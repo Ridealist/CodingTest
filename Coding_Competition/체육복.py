@@ -1,3 +1,8 @@
+"""
+https://school.programmers.co.kr/learn/courses/30/lessons/42862
+"""
+
+
 def solution(n, lost, reserve):
     for num in list(reserve):
         if num in lost:
