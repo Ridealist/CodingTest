@@ -75,3 +75,29 @@ def solution(dartResult):
 
     # print(result_list)
     return answer
+
+
+def solution(dartResult):
+    d = dartResult
+    point = []
+    answer = []
+    d = d.replace("10", "k")
+    point = ["10" if i == "k" else i for i in d]
+    print(point)
+
+    idx = -1
+    sdt = ["S", "D", "T"]
+    for j in point:
+        if j.isdigit():
+            answer.append(int(j))
+            idx += 1
+        elif j in sdt:
+            answer[idx] = answer[idx] ** (sdt.index(j) + 1)
+        elif j == "*":
+            answer[idx] = answer[idx] * 2
+            if idx >= 1:
+                answer[idx - 1] = answer[idx - 1] * 2
+        elif j == "#":
+            answer[idx] = answer[idx] * (-1)
+
+    return sum(answer)
