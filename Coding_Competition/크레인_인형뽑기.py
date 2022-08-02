@@ -17,12 +17,12 @@ def solution(board, moves):
                 break
         print(catch)
         if catch:
-            repo.append(catch)
             if len(repo) >= 2:
-                if repo[-1] == repo[-2]:
-                    repo.pop(-1)
+                if catch == repo[-1]:
                     repo.pop(-1)
                     answer += 2
+            else:
+                repo.append(catch)
     print(repo)
     return answer
 
@@ -63,3 +63,28 @@ def solution(board, moves):
                 break
 
     return cnt
+
+
+###홍동쌤 풀이
+def solution(board, moves):
+    st = []
+    answer = 0
+    for move in moves:
+        doll = None
+        idx = move - 1
+        for b in board:
+            if b[idx] == 0:
+                continue
+            else:
+                doll = b[idx]
+                b[idx] = 0
+                if len(st) == 0:
+                    st.append(doll)
+                else:
+                    if st[-1] == doll:
+                        st.pop(-1)
+                        answer += 2
+                    else:
+                        st.append(doll)
+                break
+    return answer
