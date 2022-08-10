@@ -36,3 +36,38 @@ def solution(id_list, report, k):
             answer[id_list.index(r.split(" ")[0])] += 1
 
     return answer
+
+
+def solution(id_list, report, k):
+    report = set(report)
+
+    blame_cnt_set = {}
+    report_set = {}
+    for r in report:
+        rep_l = r.split(" ")
+        er = rep_l[0]
+        ed = rep_l[1]
+        try:
+            blame_cnt_set[ed] += 1
+        except:
+            blame_cnt_set[ed] = 1
+        try:
+            report_set[er].append(ed)
+        except:
+            report_set[er] = [ed]
+
+    answer = []
+    for id in id_list:
+        cnt = 0
+        try:
+            for rep in report_set[id]:
+                if blame_cnt_set[rep] >= k:
+                    cnt += 1
+        except:
+            cnt = 0
+        answer.append(cnt)
+
+    # print(blame_cnt_set)
+    # print(report_set)
+
+    return answer
