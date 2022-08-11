@@ -1,0 +1,47 @@
+# # 한가지 함수
+# # 반복적용 -> break point
+# pivot = list[0]
+# l = 0
+# r = len(list)-1
+# while l < r:
+
+
+# for i in range(1, len(list)):
+#     if list[i] > pivot:
+#         for j in range(len(list) - 1, 1, -1):
+#             if list[j] < pivot:
+#                 list[i], list[j] = list[j], list[i]
+#             if i > j:
+#                 break
+
+
+import random
+
+
+def quick_sort(array: list):
+    if len(array) == 0:
+        return array
+
+    ran_idx = random.randint(0, len(array) - 1)
+    pivot = array[ran_idx]
+    left = []
+    right = []
+    equal = [pivot]
+
+    for i in array[:ran_idx] + array[ran_idx + 1 :]:
+        if i < pivot:
+            left.append(i)
+        elif i > pivot:
+            right.append(i)
+        else:
+            equal.append(i)
+
+    new_array = left + equal + right
+    print("피봇은: ", pivot)
+    print(new_array)
+    return quick_sort(left) + equal + quick_sort(right)
+
+
+list = [26, 7, 8, 42, 1, 2, 2, 5, 7, 8]
+
+print(quick_sort(list))
