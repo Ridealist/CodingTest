@@ -12,6 +12,30 @@ def solution(queue1, queue2):
     if sq1 == sq2:
         return 0
 
+    l = len(queue1) + len(queue2)
+
+    cnt = 0
+    while sq1 != target and cnt < l * 2:
+        if sq1 > sq2:
+            q1_pop = queue1.pop(0)
+            queue2.append(q1_pop)
+            cnt += 1
+        else:
+            q2_pop = queue2.pop(0)
+            queue2.append(q2_pop)
+            cnt += 1
+
+    if cnt == l * 2:
+        return -1
+
+    return cnt
+
+
+# 내 풀이 오류 존재
+"""
+    if sq1 == sq2:
+        return 0
+
     else:
         max_q = max(sq1, sq2)
 
@@ -45,6 +69,7 @@ def solution(queue1, queue2):
 
         else:
             return -1
+"""
 
 
 # 참고 코드
