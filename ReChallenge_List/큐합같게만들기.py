@@ -45,3 +45,41 @@ def solution(queue1, queue2):
 
         else:
             return -1
+
+
+# 참고 코드
+"""
+import collections
+import copy
+
+def solution(queue1, queue2):
+    a1 = collections.deque(queue1)
+    a2 = collections.deque(queue2)
+    
+    answer = 0
+    
+    tmp = copy.deepcopy(a1)
+    sum_1 = sum(a1)
+    sum_2 = sum(a2)
+    
+    while True:
+        if sum_1 > sum_2:
+            popped = a1.popleft()
+            a2.append(popped)
+            sum_1 -= popped
+            sum_2 += popped
+        elif sum_2 > sum_1:
+            popped = a2.popleft()
+            a1.append(popped)
+            sum_2 -= popped
+            sum_1 += popped
+        else:
+            return answer
+        answer += 1
+        if tmp == a1:
+            return -1
+        if answer > len(queue1) + len(queue2) + 10:
+            return -1
+    return answer
+
+"""
