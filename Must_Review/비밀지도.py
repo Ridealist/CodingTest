@@ -13,6 +13,9 @@ a
 Error!
 """
 
+# 비트 연산자!!
+# https://dojang.io/mod/page/view.php?id=2460
+
 
 def binary(le:int, n:int):
     l = [0 for _ in range(le)]
