@@ -1,6 +1,7 @@
 def DecimalToBinary(n):
-    if n >= 1:
-        DecimalToBinary(n//2)
-        print(n%2)
+    if n > 1:
+        return DecimalToBinary(n//2) + str(n%2)
+    return str(n)
 
-DecimalToBinary(17)
+
+print(DecimalToBinary(3))
