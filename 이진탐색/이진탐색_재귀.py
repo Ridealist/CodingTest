@@ -4,20 +4,21 @@ def binary_search(array, target, start, end):
     global cnt
     cnt += 1
     print(cnt, "번째 재귀함수 실행")
-    n = len(array)
+    if start > end:
+        return None
     middle = (start + end)//2
     if array[middle] > target:
-        binary_search(array, target, start, middle)
+        binary_search(array, target, start, middle - 1)
     elif array[middle] < target:
-        binary_search(array, target, middle, end)
+        binary_search(array, target, middle + 1, end)
     else:
-        print("찾으려는 위치: ", middle)
+        print("찾으려는 위치: ", middle, "번째 인덱스")
 
 cnt = 0
 
 array = [2*i for i in range(10)]
 
-target = 16
+target = 15
 
 start = 0
 end = len(array) - 1
