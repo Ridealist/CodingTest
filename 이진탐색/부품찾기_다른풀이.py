@@ -23,6 +23,7 @@ array = [0] * 10000001
 
 # 부품 번호 입력받아서 기록
 for i in input().split():
+    # 계수정렬 응용!
     array[int(i)] = 1
 
 m = int(input())
