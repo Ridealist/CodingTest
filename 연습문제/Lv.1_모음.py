@@ -15,3 +15,11 @@ def solution(n):
         r = n % 10
         return r + solution(n // 10)
     return n
+
+
+"""
+https://school.programmers.co.kr/learn/courses/30/lessons/12944
+"""
+
+def solution(n):
+    return [int(i) for i in list(str(n)[::-1])]
