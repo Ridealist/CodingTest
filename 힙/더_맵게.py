@@ -24,3 +24,26 @@ def solution(scoville, K):
 
 result = solution(scoville, K)
 print(result)
+
+
+# heapq 사용!!
+# Wow!!!
+import heapq
+
+def solution(scoville, K):
+    heapq.heapify(scoville)
+    cnt = 0
+    
+    while len(scoville) > 1 and scoville[0] < K:
+        m = heapq.heappop(scoville)
+        sec_m = heapq.heappop(scoville)
+        new = m + (sec_m * 2)
+        heapq.heappush(scoville, new)
+        cnt += 1
+    
+    if len(scoville) == 1:
+        if heapq.heappop(scoville) >= K:
+            return cnt
+        return -1
+    else:
+        return cnt
