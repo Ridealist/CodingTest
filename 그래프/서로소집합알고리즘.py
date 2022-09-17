@@ -10,7 +10,7 @@ start_time = time.time()
 #     return x
 
 
-# 경로 압축 기법 코드
+## 경로 압축 기법 코드
 def find_parent(parent, x):
     if parent[x] != x:
         print(f"parent 한번 더 찾기: {x} -> {parent[x]}")
