@@ -22,24 +22,53 @@ def updown(alpha: str):
     return alpha_dict[alpha]
 
 
-def rightleft(name):
-    nota_cnt = 0
-    a_cnt = 0
-    isastart = False
-    
-    for i in name:
-        if i != "A" and isastart is True:
+def findpath(idx, map):
+    p_cnt = 0
+    m_cnt = 0
+    for i in range(len(map)):
+        if map[idx + i] == 1:
+            p_cnt = i
             break
-        if i != "A":
-            nota_cnt += 1
-        else:
-            a_cnt += 1
-            isastart = True
-    
-    if nota_cnt <= a_cnt:
-        return (nota_cnt-1)*2 + len(name) - nota_cnt - a_cnt
+    for j in range(len(map)):
+        if map[idx - j] == 1:
+            m_cnt = j
+            break
+    if p_cnt <= m_cnt:
+        n_idx = idx + p_cnt
+        map[n_idx] = 0
+        return n_idx, map, p_cnt
     else:
-        return len(name) - 1
+        n_idx = idx - m_cnt
+        map[n_idx] = 0
+        return n_idx, map, m_cnt
+
+
+m = [0, 0, 1]
+i = 0
+
+print(findpath(i, m))
+
+
+def rightleft(name):
+    total = 0
+    m = [0]
+    for i in name[1:]:
+        if i == "A":
+            m.append(0)
+        else:
+            m.append(1)
+    i = 0
+    while sum(m) > 0:
+        n_idx, n_map, cnt = findpath(i, m)
+        i = n_idx
+        m = n_map
+        total += cnt
+    
+    return total
+
+
+print(rightleft("JAN"))
+
 
 def solution(name):
     rl_cnt = rightleft(name)
@@ -48,3 +77,5 @@ def solution(name):
         ud_cnt += updown(i)
 
     return rl_cnt + ud_cnt
+
+print(solution("JAN"))
