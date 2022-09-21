@@ -18,8 +18,6 @@ def solution(phone_book: list):
     phone_book_copy = phone_book.copy()
     for i in range(len(phone_book)):
         poped_phone = phone_book_copy.pop(i)
-        
-
 
     for idx, phone in enumerate(phone_book):
         for i in range(idx):
