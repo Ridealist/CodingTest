@@ -2,6 +2,7 @@
 https://www.acmicpc.net/problem/1439
 """
 
+# 백준 풀이 공부해보기!!!
 
 from collections import deque
 
