@@ -1,3 +1,12 @@
+"""
+Edge Case
+숫자의 합이 0인 경우
+
+if num != 0:
+    += str(num)
+"""
+
+
 data = input()
 
 from string import ascii_uppercase
@@ -20,4 +29,7 @@ answer = str()
 for key in dic.keys():
     answer += key * dic[key]
 
-print(answer + str(num))
+if num != 0:
+    print(answer + str(num))
+else:
+    print(answer)
