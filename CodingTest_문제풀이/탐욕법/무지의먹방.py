@@ -25,3 +25,27 @@ def solution(food_times, k):
         return i+1
 
 print(solution([3, 1, 2], 5))
+
+
+### 회택이 풀이
+
+def solution(food_times, k):
+    times = k // len(food_times)
+    remainder = k % len(food_times) - 1
+    extra = remainder + 1
+    for i in range(len(food_times)):
+        food_times[i] -= times
+        if extra > 0:
+            food_times[i] -= 1
+            extra -= 1
+            
+    if sum(food_times) <= 0:
+        return -1
+    
+    idx = (sum(filter(lambda x: x<0, food_times)) * -1 + remainder + 1) % len(food_times)
+    print(food_times)
+    print(sum(filter(lambda x: x<0, food_times)) * -1)
+    print(remainder)
+    print(times)
+    
+    return idx + 1
