@@ -11,6 +11,9 @@ https://school.programmers.co.kr/learn/courses/30/lessons/60057
 
 m = len(s)
 
+m = 10000000일 경우,
+n = 1이면, range(1,1)이 되면서 for loop가 안돌아감... 
+
 """
 
 
@@ -37,19 +40,21 @@ def compress(cut: list):
             else:
                 res += (str(cnt) + cut[i])
             cnt = 1
+
     if cut[-1] == cut[-2]:
         if cnt == 1:
             res += cut[-1]
         else:
-            res += (str(cnt) + cut[i])
-    
-    return res
+            res += (str(cnt) + cut[-1])
+    else:
+        res += cut[-1]
+            
     return len(res)
 
 print(compress(['ab', 'ab', 'cd', 'cd', 'ab', 'ab', 'cd', 'cd']))
 
 def solution(s):
-    cuts = cutstr(s)    
+    cuts = cutstr(s)
     ## 제한 범위 설정하기 연습
     ## 가능한 범위를 항상 생각하기!
     m = len(s)
@@ -85,3 +90,35 @@ def solution(s):
     
     return answer
 
+
+############## 회택 풀이
+
+def solution(S):
+    min_length = 10000000000
+    if len(S) == 1:
+        return 1
+    for size in range(1, len(S)//2 + 1):
+        min_length = min(min_length, zip_string(S, size))
+    return min_length
+
+
+def zip_string(S, size):
+    count = {}
+    re = ""
+    L = 0
+    for R in range(size, len(S) + 1, size):
+        L = R - size
+        if S[L:R] not in count:
+            if count:
+                key = next(iter(count))
+                num = count.pop(key)
+                re += key if num == 1 else str(num) + key
+
+            count[S[L:R]] = 1
+        elif S[L:R] in count:
+            count[S[L:R]] = count.get(S[L:R]) + 1
+    
+    key = next(iter(count))
+    num = count.pop(key)
+    re += key+ S[R:] if num == 1 else str(num) + key + S[R:]
+    return len(re)
