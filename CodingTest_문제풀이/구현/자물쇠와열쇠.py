@@ -41,8 +41,8 @@ def solution(key, lock):
 
     for _ in range(4):
         # 위치 옮겨가면서 키 끼우기
-        for i in range(1, m+n):
-            for j in range(1, m+n):
+        for i in range(0, m+n+1):
+            for j in range(0, m+n+1):
                 Map = makemap(n, m, lock)
                 for idx in range(m):
                     for jdx in range(m):
@@ -51,7 +51,7 @@ def solution(key, lock):
                 # Map을 update 한 후 딱 맞는지 확인
                 # print(i, j)
                 part = [i[n:n+m] for i in Map[n:n+m]]
-                # print("중간 단계:", part)
+                print("중간 단계:", part)
                 flag = True
                 for u in range(m):
                     for v in range(m):
