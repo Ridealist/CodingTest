@@ -1,3 +1,7 @@
+/*
+https://www.acmicpc.net/problem/11047
+*/
+
 #include <stdio.h>
 
 int size;

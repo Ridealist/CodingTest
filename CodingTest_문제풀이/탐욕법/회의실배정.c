@@ -1,3 +1,7 @@
+/*
+https://www.acmicpc.net/problem/1931
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
