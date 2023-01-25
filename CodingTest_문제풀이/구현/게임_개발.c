@@ -1,3 +1,5 @@
+// TODO 스스로의 힘으로 다시 풀어보기!
+
 #include <stdio.h>
 
 int n, m, x, y, direction;
