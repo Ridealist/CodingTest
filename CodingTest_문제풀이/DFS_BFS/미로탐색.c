@@ -1,9 +1,13 @@
 /*
 https://www.acmicpc.net/problem/2178
+
+https://velog.io/@ohdowon064/BOJ-2178%EB%B2%88-%EB%AF%B8%EB%A1%9C%ED%83%90%EC%83%89-C%EC%96%B8%EC%96%B4
+-> 위 블로그 참조
 */
 
 #include <stdio.h>
 
+// 다른 사람 풀이
 int graph[101][101] = { 0, };   // 미로 저장
 int q[10001][2] = { 0, }; // 현재 방문한 좌표(x, y) 저장
 
@@ -18,8 +22,8 @@ int bfs() {
     int front = 0; int rear = 0;
 
     // 큐에 처음 (1, 1) 좌표 삽입
-    q[front][0] = 1;
-    q[front][1] = 1;
+    q[rear][0] = 1;
+    q[rear][1] = 1;
     rear++;
 
     // 큐가 빌 때 까지
@@ -41,7 +45,7 @@ int bfs() {
                 continue;
             
             // 이전 칸에서 이동한 칸 수  + 1
-            graph[nx][ny] = graph[nx][ny] + 1;
+            graph[nx][ny] = graph[x][y] + 1;
 
             // 큐에 (nx, ny) 삽입
             q[rear][0] = nx;
@@ -50,5 +54,19 @@ int bfs() {
         }
     }
     return graph[n][m];
+}
 
+int main() {
+    scanf("%d %d", &n, &m);
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= m; j++) {
+            scanf("%1d", &graph[i][j]);
+        }
+    }
+   
+    int ans = bfs();
+    printf("%d", ans);
+    
+    return 0;
 }
