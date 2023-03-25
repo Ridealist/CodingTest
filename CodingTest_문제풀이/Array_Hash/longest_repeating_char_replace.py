@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/longest-repeating-character-replacement/
 
+
 from collections import defaultdict
 
 class Solution:
